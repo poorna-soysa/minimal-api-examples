@@ -1,4 +1,5 @@
 using MinimalApiExamples.Extensions;
+using MinimalApiExamples.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,8 @@ app.UseHttpsRedirection();
 
 app.MapGroup("/api/products")
 .MapProductsApi()
-.WithTags("product api");
+.AddEndpointFilter<EndpointFilter>()
+.WithTags("Product api");
 
 app.Run();
 
